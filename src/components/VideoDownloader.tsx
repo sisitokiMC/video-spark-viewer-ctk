@@ -7,7 +7,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Progress } from '@/components/ui/progress';
 import { Badge } from '@/components/ui/badge';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { Download, Play, Settings, Folder, Link, Video, Music, List, User } from 'lucide-react';
+import { Download, Play, Settings, Folder, Link, Video, Music, List, User, Infinity } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 
 interface DownloadItem {
@@ -55,7 +55,6 @@ const VideoDownloader = () => {
       thumbnail: '/placeholder.svg'
     }
   ]);
-  const [dailyDownloads, setDailyDownloads] = useState(29);
   const { toast } = useToast();
 
   const handleDownload = () => {
@@ -119,13 +118,6 @@ const VideoDownloader = () => {
     });
   };
 
-  const handleActivateLicense = () => {
-    toast({
-      title: "Activate license",
-      description: "Activate your license to download more."
-    });
-  };
-
   return (
     <div className="min-h-screen bg-gradient-to-br from-green-50 to-green-100 p-4">
       <div className="max-w-6xl mx-auto space-y-6">
@@ -137,7 +129,7 @@ const VideoDownloader = () => {
             </div>
             <div>
               <h1 className="text-2xl font-bold text-gray-900">4K Video Downloader+</h1>
-              <p className="text-sm text-gray-600">[Not Activated]</p>
+              <p className="text-sm text-gray-600">[Premium Version]</p>
             </div>
           </div>
           <div className="flex items-center space-x-2">
@@ -333,22 +325,17 @@ const VideoDownloader = () => {
               </CardContent>
             </Card>
 
-            {/* Daily Downloads */}
+            {/* Infinite Downloads */}
             <Card className="bg-green-500 text-white">
               <CardContent className="p-6">
                 <div className="text-center space-y-4">
-                  <div className="text-3xl font-bold">{dailyDownloads}</div>
-                  <div>
-                    <p className="font-medium">daily downloads remaining</p>
-                    <p className="text-sm opacity-90">Activate your license to download more</p>
+                  <div className="text-3xl flex items-center justify-center">
+                    <Infinity className="w-10 h-10" />
                   </div>
-                  <Button 
-                    onClick={handleActivateLicense}
-                    className="w-full bg-white text-green-500 hover:bg-gray-100"
-                  >
-                    <Play className="w-4 h-4 mr-2" />
-                    Activate
-                  </Button>
+                  <div>
+                    <p className="font-medium">Unlimited Downloads</p>
+                    <p className="text-sm opacity-90">Premium version activated</p>
+                  </div>
                 </div>
               </CardContent>
             </Card>
